@@ -1,0 +1,140 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "CashFlow.Communication/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CashFlow.Communication.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CashFlow.Communication.dll": {}
+        }
+      },
+      "CashFlow.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CashFlow.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CashFlow.Domain.dll": {}
+        }
+      },
+      "CashFlow.Exception/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CashFlow.Exception.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CashFlow.Exception.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CashFlow.Communication/1.0.0": {
+      "type": "project",
+      "path": "../CashFlow.Communication/CashFlow.Communication.csproj",
+      "msbuildProject": "../CashFlow.Communication/CashFlow.Communication.csproj"
+    },
+    "CashFlow.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CashFlow.Domain/CashFlow.Domain.csproj",
+      "msbuildProject": "../CashFlow.Domain/CashFlow.Domain.csproj"
+    },
+    "CashFlow.Exception/1.0.0": {
+      "type": "project",
+      "path": "../CashFlow.Exception/CashFlow.Exception.csproj",
+      "msbuildProject": "../CashFlow.Exception/CashFlow.Exception.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "CashFlow.Communication >= 1.0.0",
+      "CashFlow.Domain >= 1.0.0",
+      "CashFlow.Exception >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\gabim\\.nuget\\packages\\": {},
+    "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Application\\CashFlow.Application.csproj",
+      "projectName": "CashFlow.Application",
+      "projectPath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Application\\CashFlow.Application.csproj",
+      "packagesPath": "C:\\Users\\gabim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\gabim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Communication\\CashFlow.Communication.csproj": {
+              "projectPath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Communication\\CashFlow.Communication.csproj"
+            },
+            "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Domain\\CashFlow.Domain.csproj": {
+              "projectPath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Domain\\CashFlow.Domain.csproj"
+            },
+            "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Exception\\CashFlow.Exception.csproj": {
+              "projectPath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Exception\\CashFlow.Exception.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.100"
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
