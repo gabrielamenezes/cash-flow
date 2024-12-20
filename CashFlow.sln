@@ -3,8 +3,62 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{751C23AB-906E-476F-9CB2-115A9706C9FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E533BAD4-9189-4321-B119-53257E127791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Api", "src\CashFlow.Api\CashFlow.Api.csproj", "{FBDC295E-347E-4C2D-9182-4D293BFC1B8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{C6D34650-FB43-4FF2-B6A1-A482285EEA3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{98D05AA7-62CC-46AB-AFAB-14102087EAF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Communication", "src\CashFlow.Communication\CashFlow.Communication.csproj", "{7E0DE714-B8DA-4FAA-8399-6B011E5BC694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{A95DA601-141F-4B46-9C5F-6E6075A435DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{228756E1-060A-4AF3-B9D3-2F3872813B4F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBDC295E-347E-4C2D-9182-4D293BFC1B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBDC295E-347E-4C2D-9182-4D293BFC1B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBDC295E-347E-4C2D-9182-4D293BFC1B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBDC295E-347E-4C2D-9182-4D293BFC1B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D34650-FB43-4FF2-B6A1-A482285EEA3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D34650-FB43-4FF2-B6A1-A482285EEA3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D34650-FB43-4FF2-B6A1-A482285EEA3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D34650-FB43-4FF2-B6A1-A482285EEA3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98D05AA7-62CC-46AB-AFAB-14102087EAF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98D05AA7-62CC-46AB-AFAB-14102087EAF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98D05AA7-62CC-46AB-AFAB-14102087EAF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98D05AA7-62CC-46AB-AFAB-14102087EAF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A95DA601-141F-4B46-9C5F-6E6075A435DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95DA601-141F-4B46-9C5F-6E6075A435DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95DA601-141F-4B46-9C5F-6E6075A435DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95DA601-141F-4B46-9C5F-6E6075A435DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FBDC295E-347E-4C2D-9182-4D293BFC1B8C} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{C6D34650-FB43-4FF2-B6A1-A482285EEA3A} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{98D05AA7-62CC-46AB-AFAB-14102087EAF7} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{A95DA601-141F-4B46-9C5F-6E6075A435DF} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{228756E1-060A-4AF3-B9D3-2F3872813B4F} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
 	EndGlobalSection
 EndGlobal
