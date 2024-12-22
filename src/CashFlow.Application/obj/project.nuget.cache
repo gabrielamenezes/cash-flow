@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7fQZr+8Xcoo=",
+  "dgSpecHash": "IskdkRyk3cI=",
   "success": true,
   "projectFilePath": "C:\\Users\\gabim\\source\\repos\\CashFlow\\src\\CashFlow.Application\\CashFlow.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\gabim\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512"
+  ],
   "logs": []
 }
