@@ -13,29 +13,17 @@ public class RegisterExpenseUseCase
 
     private void Validate(RequestRegisterExpenseJson request)
     {
-        var titleIsEmpty = string.IsNullOrWhiteSpace(request.Title);
-        if(titleIsEmpty)
+        var validator = new RegisterExpenseValidator();
+        //devolve uma lista de erros
+        var result = validator.Validate(request);
+        
+
+        if(!result.IsValid)
         {
-            throw new ArgumentException("Title is required");
-        }
-
-        if(request.Amount <= 0)
-        {
-            throw new ArgumentException("Amount must be greater than zero");
-        }
-
-        var result = DateTime.Compare(request.Date, DateTime.Now);
-
-        if(result > 0)
-        {
-            throw new ArgumentException("Date must be less than or equal to the current date");
-        }
-
-        var paymentTypeIsValid = Enum.IsDefined(typeof(PaymentType), request.PaymentType);
-
-        if(!paymentTypeIsValid)
-        {
-            throw new ArgumentException("Payment type is invalid");
+            //seleciona em cada um dos elementos dessa lista, o error message
+            // LINQ - um conjunto de recursos que estende as poderosas capacidades de consulta SQL para as linguagens c#
+            var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
+            throw new ArgumentException();
         }
     }
 }
