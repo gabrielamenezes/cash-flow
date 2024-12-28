@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{751C23AB-906E-476F-9CB2-115A9706C9FC}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{A95DA601-141F-4B46-9C5F-6E6075A435DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{228756E1-060A-4AF3-B9D3-2F3872813B4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Tests", "tests\Validators.Tests\Validators.Tests.csproj", "{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{228756E1-060A-4AF3-B9D3-2F3872813B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{7E0DE714-B8DA-4FAA-8399-6B011E5BC694} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
 		{A95DA601-141F-4B46-9C5F-6E6075A435DF} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
 		{228756E1-060A-4AF3-B9D3-2F3872813B4F} = {751C23AB-906E-476F-9CB2-115A9706C9FC}
+		{9CA9AC7F-9F7F-4F78-BA3D-4455C2E1ACCA} = {E533BAD4-9189-4321-B119-53257E127791}
 	EndGlobalSection
 EndGlobal
