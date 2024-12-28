@@ -3,16 +3,12 @@ using System.Globalization;
 
 namespace CashFlow.Api.Middleware;
 
-public class CultureMiddleware
+public class CultureMiddleware(RequestDelegate next)
 {
-    private readonly RequestDelegate _next;
-    public CultureMiddleware(RequestDelegate next)
-    {
-        _next = next;
-    }
+    private readonly RequestDelegate _next = next;
+
     public async Task Invoke(HttpContext context)
     {
-
         var supportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();
         //extraindo do header da minha requisição qual é a cultura de quem fez a requisição deseja
         var requestedCulture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
