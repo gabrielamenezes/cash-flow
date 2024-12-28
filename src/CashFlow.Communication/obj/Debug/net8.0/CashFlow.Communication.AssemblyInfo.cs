@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CashFlow.Communication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c3723c5b3d65f9d7239bbedf0446326320e79bf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b646eead8a94b24ee691e7549e63e1333f72a88")]
 [assembly: System.Reflection.AssemblyProductAttribute("CashFlow.Communication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CashFlow.Communication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
