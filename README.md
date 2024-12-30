@@ -20,6 +20,7 @@
 - **CashFlow.Communication:** Contains the request and response models.
 - **CashFlow.Domain:** Contains the domain entities and enums.
 - **CashFlow.Infrastructure:** Contains the data access layer and database context.
+- **CashFlow.Exception:** Custom exception handling and related utilities.
 
 ## Getting Started
 To get started with the project:
