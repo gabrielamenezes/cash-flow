@@ -10,7 +10,7 @@ public class RegisterExpenseUseCase(IExpensesRepository expensesRepository, IUni
 {
     private readonly IExpensesRepository _expensesRepository = expensesRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    public ResponseRegisteredExpensiveJson Execute(RequestRegisterExpenseJson request)
+    public async Task<ResponseRegisteredExpensiveJson> Execute(RequestRegisterExpenseJson request)
     {
 
         Validate(request);
@@ -22,8 +22,8 @@ public class RegisterExpenseUseCase(IExpensesRepository expensesRepository, IUni
             Amount = request.Amount,
             PaymentType = (Domain.Enums.PaymentType)request.PaymentType
         };
-        _expensesRepository.Add(entity);
-        _unitOfWork.Commmit();
+        await _expensesRepository.Add(entity);
+        await _unitOfWork.Commmit();
         return new ResponseRegisteredExpensiveJson();
     }
 
