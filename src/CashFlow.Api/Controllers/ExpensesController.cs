@@ -28,4 +28,14 @@ public class ExpensesController : ControllerBase
         var response = await useCase.Execute();
         return response.Expenses.Count != 0 ? Ok(response) : NoContent();
     }
+
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseTypeAttribute(typeof(ResponseExpenseJson), StatusCodes.Status200OK)]
+    [ProducesResponseTypeAttribute(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById([FromServices] IGetExpenseByIdUseCase useCase, [FromRoute] long id)
+    {
+        var response = await useCase.Execute(id);
+        return response != null ? Ok(response) : NotFound();
+    }
 }
