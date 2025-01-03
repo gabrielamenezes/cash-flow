@@ -2,6 +2,7 @@
 using CashFlow.Communication.Responses;
 using CashFlow.Domain.Repositories.Expenses;
 using CashFlow.Domain.Repositories;
+using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Expenses.GetById;
 
@@ -9,8 +10,23 @@ public class GetExpenseByIdUseCase(IExpensesRepository expensesRepository, IMapp
 {
     private readonly IExpensesRepository _expensesRepository = expensesRepository;
     private readonly IMapper _mapper = mapper;
-    public Task<ResponseExpenseJson> Execute(long id)
+    public async Task<ResponseExpenseJson> Execute(long id)
     {
-        
+        Validate(id);
+        var expense = await _expensesRepository.GetById(id);
+        return _mapper.Map<ResponseExpenseJson>(expense);
+    }
+
+    private static void Validate(long id)
+    {
+        var validator = new GetExpenseByIdValidator();
+        var result = validator.Validate(id);
+
+        if (!result.IsValid)
+        {
+            var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
+            throw new ErrorOnValidationException(errorMessages);
+        }
+
     }
 }
