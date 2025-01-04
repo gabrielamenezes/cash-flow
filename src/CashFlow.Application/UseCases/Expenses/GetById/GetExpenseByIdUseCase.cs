@@ -13,8 +13,8 @@ public class GetExpenseByIdUseCase(IExpensesRepository expensesRepository, IMapp
     public async Task<ResponseExpenseJson> Execute(long id)
     {
         Validate(id);
-        var expense = await _expensesRepository.GetById(id);
-        return _mapper.Map<ResponseExpenseJson>(expense);
+        var result = await _expensesRepository.GetById(id);
+        return _mapper.Map<ResponseExpenseJson>(result);
     }
 
     private static void Validate(long id)
