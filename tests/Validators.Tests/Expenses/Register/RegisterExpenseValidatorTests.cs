@@ -1,5 +1,4 @@
-﻿using CashFlow.Communication.Requests;
-using CashFlow.Exception;
+﻿using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
 
@@ -11,7 +10,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnSuccessWhenRequestIsValid()
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
 
         //Act
@@ -28,7 +27,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnErrorWhenTitleIsEmpty(string title)
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Title = title;
         //Act
@@ -42,7 +41,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnErrorWhenAmountIsZero()
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Amount = 0;
 
@@ -56,7 +55,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnErrorWhenDateIsInTheFuture()
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Date = DateTime.UtcNow.AddDays(1);
         //Act
@@ -70,7 +69,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnErrorWhenPaymentTypeIsInvalid()
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.PaymentType = (CashFlow.Communication.Enums.PaymentType)int.MaxValue;
         //Act
@@ -86,7 +85,7 @@ public class RegisterExpenseValidatorTests
     public void ShouldReturnErrorWhenAmountIsNegativeOrZero(decimal amount)
     {
         //Arrange
-        var validator = new CashFlow.Application.UseCases.Expenses.Register.RegisterExpenseValidator();
+        var validator = new CashFlow.Application.UseCases.Expenses.ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Amount = amount;
         //Act

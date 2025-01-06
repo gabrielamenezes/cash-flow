@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CashFlow.Application.AutoMapper;
 using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 using CashFlow.Domain.Entities;
@@ -25,7 +24,7 @@ public class RegisterExpenseUseCase(IExpensesWriteOnlyRepository expensesReposit
 
     private void Validate(RequestExpenseJson request)
     {
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         //devolve uma lista de erros
         var result = validator.Validate(request);
         
