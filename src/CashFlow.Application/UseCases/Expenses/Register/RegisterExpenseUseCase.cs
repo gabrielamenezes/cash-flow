@@ -13,7 +13,7 @@ public class RegisterExpenseUseCase(IExpensesWriteOnlyRepository expensesReposit
     private readonly IExpensesWriteOnlyRepository _expensesRepository = expensesRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
-    public async Task<ResponseRegisteredExpensiveJson> Execute(RequestRegisterExpenseJson request)
+    public async Task<ResponseRegisteredExpensiveJson> Execute(RequestExpenseJson request)
     {
 
         Validate(request);
@@ -23,7 +23,7 @@ public class RegisterExpenseUseCase(IExpensesWriteOnlyRepository expensesReposit
         return _mapper.Map<ResponseRegisteredExpensiveJson>(entity);
     }
 
-    private void Validate(RequestRegisterExpenseJson request)
+    private void Validate(RequestExpenseJson request)
     {
         var validator = new RegisterExpenseValidator();
         //devolve uma lista de erros

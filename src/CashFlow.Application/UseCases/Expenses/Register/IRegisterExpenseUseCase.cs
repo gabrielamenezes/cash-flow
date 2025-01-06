@@ -4,5 +4,5 @@ using CashFlow.Communication.Responses;
 namespace CashFlow.Application.UseCases.Expenses.Register;
 public interface IRegisterExpenseUseCase
 {
-    Task<ResponseRegisteredExpensiveJson> Execute(RequestRegisterExpenseJson request);
+    Task<ResponseRegisteredExpensiveJson> Execute(RequestExpenseJson request);
 }

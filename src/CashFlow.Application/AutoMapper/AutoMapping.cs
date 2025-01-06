@@ -14,7 +14,7 @@ public class AutoMapping : Profile
     //mapeamento de requisição para entidade a ser persistida
     private void RequestToEntity()
     {
-        CreateMap<RequestRegisterExpenseJson, Expense>();
+        CreateMap<RequestExpenseJson, Expense>();
     }
     // mapeamento de entidade para resposta
     private void EntityToResponse()
