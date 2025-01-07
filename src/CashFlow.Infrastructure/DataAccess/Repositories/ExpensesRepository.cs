@@ -14,9 +14,14 @@ internal class ExpensesRepository(CashFlowDbContext dbContext) : IExpensesReadOn
 
     public async Task<List<Expense>> GetAll() => await _dbContext.Expenses.AsNoTracking().ToListAsync();
 
-    public async Task<Expense?> GetById(long id)
+    async Task<Expense?> IExpensesReadOnlyRepository.GetById(long id)
     {
         return await _dbContext.Expenses.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
+    }
+
+    async Task<Expense?> IExpensesUpdateOnlyRepository.GetById(long id)
+    {
+        return await _dbContext.Expenses.FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public async Task<bool> Delete(long id)
