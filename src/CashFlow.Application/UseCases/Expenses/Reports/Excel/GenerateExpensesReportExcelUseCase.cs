@@ -12,10 +12,13 @@ public class GenerateExpensesReportExcelUseCase : IGenerateExpensesReportExcelUs
         workbook.Style.Font.FontSize = 12;
         workbook.Style.Font.FontName = "Times New Roman";
 
-        month.ToString("Y");
-
-        var worksheet = workbook.Worksheets.Add("Despesas");
+        var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
         InsertHeader(worksheet);
+
+        var file = new MemoryStream(); // a fonte desses dados é um arquivo em memória
+        workbook.SaveAs(file);
+
+        return file.ToArray(); //retornando o arquivo em bytes
     }
 
     private void InsertHeader(IXLWorksheet worksheet)
@@ -27,7 +30,7 @@ public class GenerateExpensesReportExcelUseCase : IGenerateExpensesReportExcelUs
         worksheet.Cell("E1").Value = ResourceReportGenerationMessage.DESCRIPTION;
 
         worksheet.Cells("A1:E1").Style.Font.Bold = true;
-        worksheet.Cells("A1:E1").Style.Fill.BackgroundColor = XLColor.FromHtml("#OC65EE");
+        //worksheet.Cells("A1:E1").Style.Fill.BackgroundColor = XLColor.FromHtml("#OC65EE");
 
         //centralizando o texto
         worksheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); 
