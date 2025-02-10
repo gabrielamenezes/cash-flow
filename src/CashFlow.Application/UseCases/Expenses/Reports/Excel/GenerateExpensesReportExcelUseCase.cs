@@ -18,12 +18,35 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
         var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
         InsertHeader(worksheet);
 
+        var aux = 2;
+        foreach(var expense in expenses)
+        {
+            worksheet.Cell($"A{aux}").Value = expense.Title;
+            worksheet.Cell($"B{aux}").Value = expense.Date;
+            worksheet.Cell($"C{aux}").Value = ConvertPaymentType(expense.PaymentType);
+            worksheet.Cell($"D{aux}").Value = expense.Amount;
+            worksheet.Cell($"E{aux}").Value = expense.Description;
+
+            aux++;
+        }
+
         var file = new MemoryStream(); // a fonte desses dados é um arquivo em memória
         workbook.SaveAs(file);
 
         return file.ToArray(); //retornando o arquivo em bytes
     }
 
+    private static string ConvertPaymentType(PaymentType paymentType)
+    {
+        return paymentType switch
+        {
+            PaymentType.Cash => ResourceReportGenerationMessage.CASH,
+            PaymentType.CreditCard => ResourceReportGenerationMessage.CREDIT_CARD,
+            PaymentType.DebitCard => ResourceReportGenerationMessage.DEBIT_CARD,
+            PaymentType.EletronicTransfer => ResourceReportGenerationMessage.ELETRONIC_TRANSFER,
+            _ => string.Empty,
+        };
+    }
     private void InsertHeader(IXLWorksheet worksheet)
     {
         worksheet.Cell("A1").Value = ResourceReportGenerationMessage.TITLE;
