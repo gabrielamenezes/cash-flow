@@ -10,6 +10,10 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
     public async Task<byte[]> Execute(DateOnly month)
     {
         var expenses = await _expensesRepository.FilterByMonth(month);
+        if(expenses.Count == 0)
+        {
+            return [];
+        }
         var workbook = new XLWorkbook(); //gerando um arquivo em branco
         workbook.Author = "Gabriela Menezes";
         workbook.Style.Font.FontSize = 12;
