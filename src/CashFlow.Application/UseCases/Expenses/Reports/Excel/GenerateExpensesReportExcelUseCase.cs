@@ -7,6 +7,7 @@ namespace CashFlow.Application.UseCases.Expenses.Reports.Excel;
 
 public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expensesRepository) : IGenerateExpensesReportExcelUseCase
 {
+    private const string CURRENCY_SYMBOL = "R$";
     private readonly IExpensesReadOnlyRepository _expensesRepository = expensesRepository;
     public async Task<byte[]> Execute(DateOnly month)
     {
@@ -15,7 +16,7 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
         {
             return [];
         }
-        var workbook = new XLWorkbook(); //gerando um arquivo em branco
+        using var workbook = new XLWorkbook(); //gerando um arquivo em branco
         workbook.Author = "Gabriela Menezes";
         workbook.Style.Font.FontSize = 12;
         workbook.Style.Font.FontName = "Times New Roman";
@@ -29,11 +30,16 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
             worksheet.Cell($"A{aux}").Value = expense.Title;
             worksheet.Cell($"B{aux}").Value = expense.Date;
             worksheet.Cell($"C{aux}").Value = ConvertPaymentType(expense.PaymentType);
+
             worksheet.Cell($"D{aux}").Value = expense.Amount;
+            worksheet.Cell($"D{aux}").Style.NumberFormat.Format = $"{CURRENCY_SYMBOL} #, ##0.00";
+
             worksheet.Cell($"E{aux}").Value = expense.Description;
 
             aux++;
         }
+
+        worksheet.Columns().AdjustToContents();
 
         var file = new MemoryStream(); // a fonte desses dados é um arquivo em memória
         workbook.SaveAs(file);
