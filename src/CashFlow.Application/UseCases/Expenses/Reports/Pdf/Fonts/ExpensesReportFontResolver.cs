@@ -27,6 +27,6 @@ public class ExpensesReportFontResolver : IFontResolver
         // pedindo a plataforma do .net, para devolver a referencia do projeto que está sendo executado agora
         var assembly = Assembly.GetExecutingAssembly();
         // vou ler como stream esse arquivo de faceName
-        return assembly.GetManifestResourceStream($"CashFlow.Application.UseCases.Reports.Pdf.Fonts.{faceName}.ttf");
+        return assembly.GetManifestResourceStream($"CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts.{faceName}.ttf");
     }
 }
