@@ -36,4 +36,10 @@
     <ProjectReference Include="..\CashFlow.Exception\CashFlow.Exception.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="UseCases\Expenses\Reports\Pdf\Logo\modo-serio.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
