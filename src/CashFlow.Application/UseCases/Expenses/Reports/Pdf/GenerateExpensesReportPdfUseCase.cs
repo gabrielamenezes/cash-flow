@@ -2,7 +2,6 @@
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
-using DocumentFormat.OpenXml.Office2013.Drawing.ChartStyle;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using PdfSharp.Fonts;
@@ -31,13 +30,22 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         var document = CreateDocument(month);
         var page = CreatePage(document);
 
+        var table = page.AddTable();
+        table.AddColumn();
+        table.AddColumn();
+
+        var row = table.AddRow();
+        row.Cells[0].AddImage("C:\\Users\\gabriela.mendes\\Downloads\\modo-serio.jpg");
+        row.Cells[1].AddParagraph("Oi, Gabriela!");
+        row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
+
         var paragraph = page.AddParagraph();
         var title = string.Format(ResourceReportGenerationMessage.TOTAL_SPENT_IN, month.ToString("Y"));
         paragraph.AddFormattedText(title, new Font { Name = FontHelper.RALEWAY_REGULAR, Size = 15 });
         paragraph.AddLineBreak();
 
         var totalExpenses = expenses.Sum(expense => expense.Amount);
-        paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font {  Name = FontHelper.WORKSANS_BLACK, Size = 50 });
+        paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font { Name = FontHelper.WORKSANS_BLACK, Size = 50 });
         return RenderDocument(document);
     }
 
