@@ -1,6 +1,7 @@
 ﻿
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Colors;
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf.Fonts;
+using CashFlow.Domain.Extensions;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
 using MigraDoc.DocumentObjectModel;
@@ -55,7 +56,7 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
             SetStyleBaseForExpensesInformation(row.Cells[1], 12, ColorsHelper.GREEN_DARK);
 
             row.Height = HEIGHT_ROW_EXPENSE_TABLE;
-            row.Cells[2].AddParagraph(expense.PaymentType.ToString());
+            row.Cells[2].AddParagraph(expense.PaymentType.PaymentTypeToString());
             SetStyleBaseForExpensesInformation(row.Cells[2], 12, ColorsHelper.GREEN_DARK);
 
 

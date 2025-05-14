@@ -1,4 +1,4 @@
-﻿using CashFlow.Domain.Enums;
+﻿using CashFlow.Domain.Extensions;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
 using ClosedXML.Excel;
@@ -12,7 +12,7 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
     public async Task<byte[]> Execute(DateOnly month)
     {
         var expenses = await _expensesRepository.FilterByMonth(month);
-        if(expenses.Count == 0)
+        if (expenses.Count == 0)
         {
             return [];
         }
@@ -25,11 +25,11 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
         InsertHeader(worksheet);
 
         var aux = 2;
-        foreach(var expense in expenses)
+        foreach (var expense in expenses)
         {
             worksheet.Cell($"A{aux}").Value = expense.Title;
             worksheet.Cell($"B{aux}").Value = expense.Date;
-            worksheet.Cell($"C{aux}").Value = ConvertPaymentType(expense.PaymentType);
+            worksheet.Cell($"C{aux}").Value = expense.PaymentType.PaymentTypeToString();
 
             worksheet.Cell($"D{aux}").Value = expense.Amount;
             worksheet.Cell($"D{aux}").Style.NumberFormat.Format = $"{CURRENCY_SYMBOL} #, ##0.00";
@@ -46,18 +46,6 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
 
         return file.ToArray(); //retornando o arquivo em bytes
     }
-
-    private static string ConvertPaymentType(PaymentType paymentType)
-    {
-        return paymentType switch
-        {
-            PaymentType.Cash => ResourceReportGenerationMessage.CASH,
-            PaymentType.CreditCard => ResourceReportGenerationMessage.CREDIT_CARD,
-            PaymentType.DebitCard => ResourceReportGenerationMessage.DEBIT_CARD,
-            PaymentType.EletronicTransfer => ResourceReportGenerationMessage.ELETRONIC_TRANSFER,
-            _ => string.Empty,
-        };
-    }
     private void InsertHeader(IXLWorksheet worksheet)
     {
         worksheet.Cell("A1").Value = ResourceReportGenerationMessage.TITLE;
@@ -70,10 +58,10 @@ public class GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expe
         //worksheet.Cells("A1:E1").Style.Fill.BackgroundColor = XLColor.FromHtml("#OC65EE");
 
         //centralizando o texto
-        worksheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); 
-        worksheet.Cell("B1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); 
-        worksheet.Cell("C1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); 
-        worksheet.Cell("E1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center); 
-        worksheet.Cell("D1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right); 
+        worksheet.Cell("A1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        worksheet.Cell("B1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        worksheet.Cell("C1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        worksheet.Cell("E1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+        worksheet.Cell("D1").Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Right);
     }
 }
