@@ -63,6 +63,21 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
             row.Height = HEIGHT_ROW_EXPENSE_TABLE;
             row.Cells[3].AddParagraph($"{CURRENCY_SYMBOL}-{expense.Amount}");
             SetStyleBaseForExpensesInformation(row.Cells[3], 14, ColorsHelper.WHITE);
+
+            if (!string.IsNullOrWhiteSpace(expense.Description))
+            {
+                var descriptionRow = table.AddRow();
+                descriptionRow.Height = HEIGHT_ROW_EXPENSE_TABLE;
+                descriptionRow.Cells[0].AddParagraph(expense.Description);
+                descriptionRow.Cells[0].Format.Font = new Font { Name = FontHelper.WORKSANS_REGULAR, Size = 10, Color = ColorsHelper.BLACK };
+                descriptionRow.Cells[0].Shading.Color = ColorsHelper.GREEN_LIGHT;
+                descriptionRow.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+                descriptionRow.Cells[0].MergeRight = 2;
+                descriptionRow.Cells[0].Format.LeftIndent = 20;
+
+                row.Cells[3].MergeDown = 1; // fundir com a linha de baixo
+
+            }
             AddBlankSpace(table);
 
         }
